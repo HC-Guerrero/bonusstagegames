@@ -2,7 +2,7 @@ const db = require('../database/dbConfig.js');
 
 const getAllVideoGames = async () => {
   try {
-    const allVideoGames = await db.any('Select * FROM videogames');
+    const allVideoGames = await db.any('SELECT * FROM videogames');
     return allVideoGames;
   } catch (error) {
     return error;
@@ -11,18 +11,18 @@ const getAllVideoGames = async () => {
 
 const getAVideoGame = async (id) => {
   try {
-    const getOneVideoGame = await db.any(
-      `SELCT * FROM videogames WHERE id = ${id} `,
+    const videoGame = await db.any(
+      `SELECT * FROM videogames WHERE id = ${id} `,
     );
-    return getOneVideoGame;
+    return videoGame;
   } catch (error) {
     return error;
   }
 };
-const createAVideoGame = async (game) => {
+const createAVideoGame = async (videoGame) => {
   try {
     let { name, genre, platforms, esrb_rating, release_date, price, about } =
-      game;
+      videoGame;
     return await db.one(
       `INSERT INTO videogames (name, genre, platforms, esrb_rating, release_date, price, about) 
         VALUES ('${name}','${genre}', '${platforms}', '${esrb_rating}', '${release_date}', '${price}', '${about}',) RETURNING *`,

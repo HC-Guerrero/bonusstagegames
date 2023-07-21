@@ -2,6 +2,9 @@ DROP DATABASE IF EXISTS bonus_stage_games;
 CREATE DATABASE bonus_stage_games;
 \c bonus_stage_games;
 
+DROP TABLE IF EXISTS videogames;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE videogames (
 id SERIAL PRIMARY KEY,
 name TEXT NOT NULL,
