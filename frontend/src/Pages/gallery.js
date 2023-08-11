@@ -2,7 +2,9 @@ import VideoGameCardGallery from '../Components/videoGameGallery';
 export default function GameGallery() {
   return (
     <section>
-      <h1> Table of Games</h1>
+      <strong>
+        <h1> Table of Games</h1>
+      </strong>
       <VideoGameCardGallery />
     </section>
   );

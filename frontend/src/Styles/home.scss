@@ -1,10 +1,17 @@
+body{
+    background-color:#463191;
+}
 .homeBlurb{
     display: grid;
     place-items: center;
+    background-color: #E72696;
    
 }
 .homeDesc{
     padding-left: 30px;
+    display: grid;
+    place-items: center;
     padding-right: 30px;
     padding-top: 30px;
+    background-color: #E72696;
 }

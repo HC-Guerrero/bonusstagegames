@@ -1,13 +1,28 @@
-export default function VideoGames({ videoGame }) {
-  console.log(videoGame);
+function VideoGames({ game }) {
+  const URL = process.env.REACT_APP_API_URL;
+
   return (
-    <div className='gameDivContainer'>
-      <h1 className='gameName'>{videoGame.name}</h1>
-      <p className='gameGenre'>{videoGame.genre}</p>
-      <p className='gamePlatforms'>{videoGame.platforms}</p>
-      <p className='gameESRB'>{videoGame.esrb_rating}</p>
-      <p className='gamePrice'>{videoGame.price}</p>
-      <p className='gameAbout'>{videoGame.about}</p>
+    <div
+      id='videoGameCard__Div'
+      className='max-w-sm rounded overflow-hidden shadow-lg border-red'
+    >
+      {console.log('Hi my name is Bob' + game)}
+      <img
+        src={game?.image}
+        id='videoGame__image'
+        className='w-full rounded-3xl border-logored '
+        height='300'
+        width='200'
+        alt='game image'
+      />
+      <h2 className='gameName'>{game?.name}</h2>
+      <p className='gameGenre'>{game?.genre}</p>
+      <p className='gamePlatforms'>{game?.platforms}</p>
+      <p className='gameESRB'>{game?.esrb_rating}</p>
+      <p className='gamePrice'>{game?.price}</p>
+      <p className='gameAbout'>{game?.about}</p>
     </div>
   );
 }
+
+export default VideoGames;

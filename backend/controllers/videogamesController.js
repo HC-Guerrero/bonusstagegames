@@ -11,7 +11,7 @@ const videogamesController = express.Router();
 videogamesController.get('/', async (request, response) => {
   const allGames = await getAllVideoGames();
   //console.log(allGames);
-  if (allGames[0]) {
+  if (allGames) {
     response.status(200).json({
       success: true,
       payload: allGames,
@@ -34,13 +34,13 @@ videogamesController.get('/:id', async (request, response) => {
     response.status(404).json({
       success: false,
       id: id,
-      payload: `An game with the id of:${id} is not available at this time.`,
+      payload: `A game with the id of:${id} is not available at this time.`,
     });
   }
 });
 
 videogamesController.delete('/:id', async (request, response) => {
-  const id = request.params;
+  const { id } = request.params;
   const gameToDelete = await deleteAVideoGame(id);
   if (gameToDelete) {
     if (gameToDelete.id) {

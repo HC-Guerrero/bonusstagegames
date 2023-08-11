@@ -11,7 +11,7 @@ const getAllVideoGames = async () => {
 
 const getAVideoGame = async (id) => {
   try {
-    const videoGame = await db.any(
+    const videoGame = await db.one(
       `SELECT * FROM videogames WHERE id = ${id} `,
     );
     return videoGame;

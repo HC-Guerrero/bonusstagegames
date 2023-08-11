@@ -1,0 +1,16 @@
+#navBar__containDiv{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+     position: fixed;
+     width: 100%;
+     top: 0;
+     color: white;
+     background-color: black;
+}
+#navBar__buttonDiv{
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    width: 40%;
+}

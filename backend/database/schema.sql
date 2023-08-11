@@ -13,7 +13,8 @@ platforms TEXT,
 esrb_rating TEXT NOT NULL,
 release_date TEXT,
 price INT,
-about TEXT
+about TEXT,
+image TEXT
 );
 
 CREATE TABLE users (
