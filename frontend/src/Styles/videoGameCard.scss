@@ -1,0 +1,20 @@
+#videoGameCard__Div{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border: 2px solid black;
+}
+#videoGame__image{
+    display: inline-block;
+    vertical-align: top;
+   
+}
+#videoGameCard_textDiv{
+    display: inline-block;
+    width: 46%;
+    padding-left: 5%;
+    @media (max-width: 620px) {
+        width: 100%;
+      }
+}

@@ -1,4 +1,5 @@
 const express = require('express');
+const pool = require('../database/database.js');
 const {
   getAllUsers,
   getAUser,
@@ -56,7 +57,7 @@ usersController.delete('/:id', async (request, response) => {
   }
 });
 
-usersController.post('/', async (request, response) => {
+usersController.post('/', async (req, res) => {
   try {
     const user = await createUser(request.body);
     response.json({
@@ -66,7 +67,29 @@ usersController.post('/', async (request, response) => {
   } catch (error) {
     return error;
   }
+  // const name = req.body['name'];
+  // const photo = req.body['photo'];
+  // const password = req.body['password'];
+  // const email = req.body['email'];
+  // const age = req.body['age'];
+  // console.log('Username:' + name);
+  // console.log('Password:' + password);
+  // console.log('Email:' + email);
+  // console.log('Age:' + age);
+  // const insertSTMT = `INSERT INTO users (name, photo, password, email, age) VALUES ('${name}','${photo}', '${password}', '${email}', '${age}');`;
+  // pool
+  //   .query(insertSTMT)
+  //   .then((response) => {
+  //     console.log('Data saved');
+  //     console.log(response);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+  // console.log(req.body);
+  // res.send('Msg received' + req.body);
 });
+
 usersController.put('/:id', async (request, response) => {
   try {
     const { id } = request.params;

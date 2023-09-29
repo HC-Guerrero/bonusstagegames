@@ -1,7 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import '../Styles/navBar.scss';
-import { useState } from 'react';
 
 const NavBar = () => {
   return (
@@ -9,27 +8,27 @@ const NavBar = () => {
       <img id='navBar__Logo' />
       <p>Logo</p>
       <div id='navBar__buttonDiv'>
-        <Link>
+        <Link to={`/videoGames`}>
           <button>
             <div id='navBar__ButtonDiv1'>
               <img id='navBar__img1' />
-              <p>Button 1</p>
+              <p>VideoGames</p>
             </div>
           </button>
         </Link>
-        <Link>
+        <Link to={`/users/new`}>
           <button>
             <div id='navBar__ButtonDiv2'>
               <img id='navBar__img2' />
-              <p>Button 2</p>
+              <p>Sign Up</p>
             </div>
           </button>
         </Link>
-        <Link>
+        <Link to={`/`}>
           <button>
             <div id='navBar__ButtonDiv3'>
               <img id='navBar__img3' />
-              <p>Button 3</p>
+              <p>Home</p>
             </div>
           </button>
         </Link>

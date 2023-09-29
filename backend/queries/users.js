@@ -27,10 +27,11 @@ const createUser = async (user) => {
       enrollment_date,
       membership,
       payment_info,
+      password,
     } = user;
     return await db.one(
-      `INSERT INTO users(name, photo, email, address, age, enrollment_date, membership, payment_info) VALUES
-    ('${name}','${photo}','${email}','${address}','${age}','${enrollment_date}','${membership}','${payment_info}' )RETURNING *`,
+      `INSERT INTO users(name, photo, email, address, age, enrollment_date, membership, payment_info, password) VALUES
+    ('${name}','${photo}','${email}','${address}','${age}','${enrollment_date}','${membership}','${payment_info}', '${password}' )RETURNING *`,
       [
         name,
         photo,
@@ -40,6 +41,7 @@ const createUser = async (user) => {
         enrollment_date,
         membership,
         payment_info,
+        password,
       ],
     );
   } catch (error) {
@@ -58,11 +60,12 @@ const updateUser = async (
     enrollment_date,
     membership,
     payment_info,
+    password,
   },
 ) => {
   try {
     return await db.one(
-      `UPDATE users SET name='${name}', photo='${photo}', email='${email}', address='${address}', age='${age}', enrollment_date='${enrollment_date}', membership='${membership}', payment_info='${payment_info}'WHERE id ='${id}' RETURNING * `,
+      `UPDATE users SET name='${name}', photo='${photo}', email='${email}', address='${address}', age='${age}', enrollment_date='${enrollment_date}', membership='${membership}', payment_info='${payment_info}', password='${password}'WHERE id ='${id}' RETURNING * `,
       [
         name,
         photo,
@@ -72,6 +75,7 @@ const updateUser = async (
         enrollment_date,
         membership,
         payment_info,
+        password,
       ],
     );
   } catch (error) {

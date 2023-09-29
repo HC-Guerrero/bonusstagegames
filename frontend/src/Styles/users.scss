@@ -1,0 +1,24 @@
+#userProfile__Div{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border: 2px solid black;
+}
+#userProfile__Name{
+    text-decoration: bold;
+    padding-left: 10px;
+    font-size: 40px;
+}
+#userProfile__image{
+    display: inline-block;
+    vertical-align: top;
+}
+#userProfile__textDiv{
+    display: inline-block;
+    width: 46%;
+    padding-left: 5%;
+    @media (max-width: 620px) {
+        width: 100%;
+      }
+}

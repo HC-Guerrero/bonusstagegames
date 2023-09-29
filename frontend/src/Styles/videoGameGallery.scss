@@ -1,0 +1,12 @@
+#videoGameTableContents{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border: 2px solid black;
+}
+#videoGameGallery__backBtn{
+    margin-top: 5%;
+    max-height: 100%;
+}
+div ~ div{ margin-top: 5%; margin-bottom: 5%;}
