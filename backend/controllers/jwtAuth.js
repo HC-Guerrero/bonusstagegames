@@ -13,7 +13,7 @@ router.post('/register', validInfo, async (req, res) => {
       email,
     ]);
 
-    if (user.rows.length !== 0) {
+    if (user.rows.length > 0) {
       return res.status(401).send('User already registered');
     }
 
@@ -28,9 +28,9 @@ router.post('/register', validInfo, async (req, res) => {
       [name, photo, email, address, age, bcryptPassword],
     );
     // res.json(newUser.rows[0]);
-
+    //^Commented, this also causes a header to be sent when the body has already been written
     const token = jwtGenerator(newUser.rows[0].id);
-    res.json({ token });
+    return res.json({ token });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
@@ -49,21 +49,24 @@ router.post('/login', validInfo, async (req, res) => {
       return res.status(401).json('Password or Email not found.');
     }
 
-    const token = jwtGenerator(user.rows[0].id);
-    res.json({ token });
+    // const token = jwtGenerator(user.rows[0].id);
+    // res.json({ token });
+    //^Move this within the if statement for password validation Line 61 - 62, it causes a header to send after the body has data causing a crash
     const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
     console.log(validPassword);
     if (!validPassword) {
       return res.status(401).json('Incorrect Password or Email');
     }
+    const token = jwtGenerator(user.rows[0].id);
+    res.json({ token });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');
   }
 });
 
-router.get('/verify', authorization, async (req, res) => {
+router.post('/verify', authorization, async (req, res) => {
   try {
     res.json(true);
   } catch (err) {

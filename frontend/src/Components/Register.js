@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../Styles/Register.scss';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { toast } from 'react-toastify';
 
 const Register = ({ setAuth }) => {
@@ -9,6 +11,7 @@ const Register = ({ setAuth }) => {
     password: '',
     name: '',
   });
+  const [visible, setVisible] = useState(false);
 
   const { email, password, name } = inputs;
 
@@ -31,10 +34,10 @@ const Register = ({ setAuth }) => {
       if (parseRes.jwtToken) {
         localStorage.setItem('token', parseRes.jwtToken);
         setAuth(true);
-        toast.success('Register Successfully');
+        // toast.success('Register Successfully');
       } else {
         setAuth(false);
-        toast.error(parseRes);
+        // toast.error(parseRes);
       }
     } catch (err) {
       console.error(err.message);
@@ -43,35 +46,62 @@ const Register = ({ setAuth }) => {
 
   return (
     <div>
-      <h1 className='mt-5 text-center'>Register</h1>
-      <form onSubmit={onSubmitForm}>
-        <input
-          type='text'
-          name='email'
-          value={email}
-          placeholder='email'
-          onChange={(e) => onChange(e)}
-          className='form-control my-3'
-        />
-        <input
-          type='password'
-          name='password'
-          value={password}
-          placeholder='password'
-          onChange={(e) => onChange(e)}
-          className='form-control my-3'
-        />
-        <input
-          type='text'
-          name='name'
-          value={name}
-          placeholder='name'
-          onChange={(e) => onChange(e)}
-          className='form-control my-3'
-        />
-        <button className='btn btn-success btn-block'>Submit</button>
-      </form>
-      <Link to='/login'>login</Link>
+      <h1
+        id='FormBlurb'
+        className='font-fonts text-rose-700 text-5xl font-semibold content-center'
+      >
+        Register
+      </h1>
+      <div id='RegisterForm'>
+        <h1
+          id='FormBlurb'
+          className='font-fonts text-rose-700 text-5xl font-semibold content-center'
+        >
+          Register
+        </h1>
+        <form className='NewUserForm' onSubmit={onSubmitForm}>
+          <label htmlFor='email'>Email:</label>
+          <input
+            type='text'
+            name='email'
+            value={email}
+            placeholder='Email'
+            onChange={(e) => onChange(e)}
+            // className='form-control my-3'
+          />
+          <label htmlFor='password'>Password:</label>
+          <input
+            type={visible ? 'text' : 'password'}
+            name='password'
+            value={password}
+            placeholder='Password'
+            onChange={(e) => onChange(e)}
+            // className='form-control my-3'
+          />
+          <div onClick={() => setVisible(!visible)}>
+            {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+          </div>
+          <label htmlFor='name'>Name:</label>
+          <input
+            type='text'
+            name='name'
+            value={name}
+            placeholder='Name'
+            onChange={(e) => onChange(e)}
+            // className='form-control my-3'
+          />
+          <button id='submitBtn' className='btn btn-success btn-block'>
+            Submit
+          </button>
+        </form>
+
+        <Link to='/login'>
+          <button id='Login'>Login</button>
+        </Link>
+        <Link to={'/videoGames'}>
+          <button id='backNew'>Back</button>
+        </Link>
+      </div>
     </div>
   );
 };

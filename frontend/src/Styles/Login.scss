@@ -1,0 +1,23 @@
+label  { margin-top: 10%; margin-bottom: 10%; }
+input  {  margin-top: 10%; margin-bottom: 10%; }
+    input[type="text"]{
+        max-height: 100%;}
+#FormBlurb{
+    font-weight: bold;
+    text-align: center;
+}
+#submitBtn{
+    margin-top: 10%; margin-bottom: 10%;
+    margin-left: 70%;
+    
+}
+.NewUserForm {
+    border-collapse: collapse;
+    border-spacing: 10px;
+    border: 2px solid black;
+    display: grid;
+    justify-content: end;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+    margin-top: 1em;
+}

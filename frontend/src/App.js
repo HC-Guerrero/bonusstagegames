@@ -16,11 +16,14 @@ import NewUserPage from './Pages/userSignUpPage.js';
 import EditUserPage from './Pages/userEditPage.js';
 
 const App = () => {
+  const setAuth = (boolean) => {
+    setIsAuthenticated(boolean);
+  };
   const checkAuthenticated = async () => {
     const URL = process.env.REACT_APP_API_URL;
     try {
       const res = await fetch(`${URL}/auth/verify`, {
-        method: 'POST',
+        method: 'GET',
         headers: { jwt_token: localStorage.token },
       });
 
@@ -38,9 +41,6 @@ const App = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const setAuth = (boolean) => {
-    setIsAuthenticated(boolean);
-  };
   return (
     <BrowserRouter>
       <NavBar />
